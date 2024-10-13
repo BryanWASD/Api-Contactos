@@ -16,7 +16,7 @@ app.use('/api', contactRoutes);
 
 mongoose.connect(process.env.MONGO_URI,)
     .then(() => console.log('Conectado a MongoDB'))
-    .catch((error) => console.log(error));
+    .catch((error) => console.log('Error de conexión a MongoDB:',error));
 
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en el puerto ${PORT}`);
