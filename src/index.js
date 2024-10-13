@@ -12,6 +12,16 @@ const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
 
+const API_URL = process.env.API_URL || `http://localhost:${PORT}`;
+const ApiEndpoints = ['/contacts', '/contacts/:id'];
+
+app.get('/', (_req, res) => {
+  res.json({
+    message: `Welcome to the Blog QUEMADOS MID see our docs at ${API_URL}/api/docs`,
+    endpoints: ApiEndpoints.map(endpoint => `${API_URL}/api${endpoint}`)
+  });
+});
+
 app.use('/api', contactRoutes);
 
 mongoose.connect(process.env.MONGO_URI,)
